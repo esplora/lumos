@@ -18,10 +18,5 @@
     </projectFiles>
     <issueHandlers>
         <MissingTemplateParam errorLevel="suppress" />
-        <UndefinedClass>
-            <errorLevel type="suppress">
-                <referencedClass name="RarArchive" />
-            </errorLevel>
-        </UndefinedClass>
     </issueHandlers>
 </psalm>
