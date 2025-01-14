@@ -43,6 +43,16 @@ interface SummaryInterface
     public function isSuccessful(): bool;
 
     /**
+     * Check if the entire process was unsuccessful.
+     *
+     * This method determines whether any step in the report has been unsuccessful.
+     * It returns a boolean value indicating the overall failure status of the process.
+     *
+     * @return bool True if any step was unsuccessful, false otherwise.
+     */
+    public function isUnsuccessful(): bool;
+
+    /**
      * Get the number of attempts made.
      *
      * This method returns the total number of attempts recorded in the report,

@@ -132,6 +132,19 @@ class Summary implements SummaryInterface
     }
 
     /**
+     * Check if the entire process was unsuccessful.
+     *
+     * This method determines whether any step in the report has been unsuccessful.
+     * It returns a boolean value indicating the overall failure status of the process.
+     *
+     * @return bool True if any step was unsuccessful, false otherwise.
+     */
+    public function isUnsuccessful(): bool
+    {
+        return ! $this->isSuccessful();
+    }
+
+    /**
      * Retrieves the total number of attempts.
      *
      * This method returns the total number of attempts, counting both successful and unsuccessful steps.
