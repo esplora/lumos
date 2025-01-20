@@ -105,9 +105,6 @@ class CustomAdapter implements AdapterInterface
 {
     /**
      * Checks if the adapter supports the given file.
-     *
-     * @param string $filePath The file path.
-     * @return bool True if supported, otherwise false.
      */
     public function canSupport(string $filePath): bool
     {
@@ -116,8 +113,6 @@ class CustomAdapter implements AdapterInterface
 
     /**
      * Checks if the environment is properly configured.
-     *
-     * @return bool True if configured, otherwise false.
      */
     public function isSupportedEnvironment(): bool
     {
@@ -126,11 +121,6 @@ class CustomAdapter implements AdapterInterface
 
     /**
      * Extracts the content to the specified directory.
-     *
-     * @param string $filePath The file path.
-     * @param string $destination The extraction destination.
-     * @param PasswordProviderInterface $passwords Password provider.
-     * @return SummaryInterface The extraction result.
      */
     public function extract(string $filePath, string $destination, PasswordProviderInterface $passwords): SummaryInterface
     {
