@@ -63,7 +63,7 @@ class SevenZipAdapterTest extends AdapterTests
         $this->assertFalse($result->isSuccessful());
     }
 
-    public function test_extraction_multipart_with_password2(): void
+    public function test_extraction_wrong_file_with_password(): void
     {
         $archivePath = $this->getFixturesDir('zip/XcwfXuLNEY.zip');
 

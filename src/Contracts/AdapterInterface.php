@@ -2,11 +2,6 @@
 
 namespace Esplora\Lumos\Contracts;
 
-/**
- * Interface for handling archive files.
- *
- * This interface must be implemented by classes that can extract archives of various formats.
- */
 interface AdapterInterface
 {
     /**
@@ -38,7 +33,9 @@ interface AdapterInterface
      * @param string                    $filePath    Path to the archive to extract.
      * @param string                    $destination Directory where the archive will be extracted. The directory will be created if it does not exist.
      * @param PasswordProviderInterface $passwords   Password provider object to attempt extraction if the archive is password-protected.
-     *                                               This can be an array or any iterable object containing password strings.
+     *                                               Can be an array or any iterable object containing password strings.
+     *
+     * @return SummaryInterface Returns the summary of the extraction process.
      */
     public function extract(string $filePath, string $destination, PasswordProviderInterface $passwords): SummaryInterface;
 }

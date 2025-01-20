@@ -9,38 +9,27 @@ use Symfony\Component\Process\Process;
 class Summary implements SummaryInterface
 {
     /**
-     * Success status of the extraction process.
-     *
-     * This flag indicates whether the extraction process has been successful.
-     * If at least one step was successful, the process is considered successful.
+     * Indicates if the extraction process was successful.
      */
     protected bool $success = false;
 
     /**
-     * Number of attempts made during the extraction process.
-     *
-     * This counts all attempts, including both successful and failed steps.
+     * Total number of attempts made.
      */
     protected int $attempts = 0;
 
     /**
-     * The password used in the extraction process, if any.
-     *
-     * This property stores the password associated with the last successful step.
+     * Password used in the last successful step, if any.
      */
-    protected ?string $password;
+    protected ?string $password = null;
 
     /**
-     * Steps involved in the extraction process.
-     *
-     * Contains all the steps of the process, including the success status and context for each step.
+     * Steps of the extraction process.
      */
     protected Collection $steps;
 
     /**
-     * Constructor.
-     *
-     * Initializes an empty collection to store the steps of the extraction process.
+     * Create a new summary instance.
      */
     public function __construct()
     {
@@ -48,71 +37,7 @@ class Summary implements SummaryInterface
     }
 
     /**
-     * Adds a step to the report.
-     *
-     * This method logs the result of the current step, including its success status and optional context.
-     * Only unique steps are added to the collection.
-     *
-     * @param bool  $success The success status of the current step.
-     * @param array $context The context of the current step, such as additional data or metadata.
-     *
-     * @return $this For method chaining.
-     */
-    public function addStep(bool $success, array $context = []): static
-    {
-        // If the current step is successful, mark the whole process as successful.
-        if ($success) {
-            $this->success = true;
-            $this->password = $context['password'] ?? null;
-        }
-
-        // Increment the number of attempts.
-        $this->attempts++;
-
-        // Generate a unique hash for the step based on its success and context.
-        $contextHash = $this->hashContext($success, $context);
-
-        // Only add the step if it's not already in the collection (to avoid duplicates).
-        if ($this->steps->has($contextHash)) {
-            return $this;
-        }
-
-        // Add the step to the collection.
-        $this->steps->put($contextHash, [
-            'success' => $success,
-            'context' => $context,
-        ]);
-
-        return $this;
-    }
-
-    /**
-     * Generates a unique hash for a step.
-     *
-     * The hash is created based on the success status and the context of the step,
-     * ensuring uniqueness and preventing duplicate steps from being added to the collection.
-     *
-     * @param bool  $success The success status of the step.
-     * @param array $context The context of the step, containing additional information.
-     *
-     * @return string A unique hash for this step.
-     */
-    protected function hashContext(bool $success, array $context): string
-    {
-        $json = collect($context)
-            ->except('password')
-            ->toJson(JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-
-        return sha1($json);
-    }
-
-    /**
-     * Retrieves all steps recorded in the report.
-     *
-     * This method returns a collection of all the steps that have been added during the process.
-     * Each step includes its success status and associated context.
-     *
-     * @return Collection The collection of all steps in the report.
+     * Get all recorded steps.
      */
     public function steps(): Collection
     {
@@ -120,24 +45,7 @@ class Summary implements SummaryInterface
     }
 
     /**
-     * Checks whether the entire process was successful.
-     *
-     * This method evaluates all steps and returns true if at least one step was successful.
-     *
-     * @return bool True if the process was successful, false otherwise.
-     */
-    public function isSuccessful(): bool
-    {
-        return $this->success;
-    }
-
-    /**
-     * Check if the entire process was unsuccessful.
-     *
-     * This method determines whether any step in the report has been unsuccessful.
-     * It returns a boolean value indicating the overall failure status of the process.
-     *
-     * @return bool True if any step was unsuccessful, false otherwise.
+     * Determine if the process was unsuccessful.
      */
     public function isUnsuccessful(): bool
     {
@@ -145,11 +53,15 @@ class Summary implements SummaryInterface
     }
 
     /**
-     * Retrieves the total number of attempts.
-     *
-     * This method returns the total number of attempts, counting both successful and unsuccessful steps.
-     *
-     * @return int The total number of attempts made during the extraction process.
+     * Determine if the process was successful.
+     */
+    public function isSuccessful(): bool
+    {
+        return $this->success;
+    }
+
+    /**
+     * Get the total number of attempts.
      */
     public function attempts(): int
     {
@@ -157,12 +69,7 @@ class Summary implements SummaryInterface
     }
 
     /**
-     * Retrieves the password used in the extraction process.
-     *
-     * This method returns the password that was associated with the last successful step.
-     * If no password was used or no successful steps were recorded, it returns null.
-     *
-     * @return string|null The password used, or null if not applicable.
+     * Get the password used in the extraction process.
      */
     public function password(): ?string
     {
@@ -170,14 +77,11 @@ class Summary implements SummaryInterface
     }
 
     /**
-     * Adds a step with information about a process.
+     * Add a step with Symfony Process details.
      *
-     * This method logs a step with additional details from a Symfony Process object,
-     * such as the success status, output, error output, exit code, and any associated password.
-     *
-     * @param bool        $success  The success status of the step.
-     * @param Process     $process  The Symfony Process object containing process details.
-     * @param string|null $password The password used in the extraction process, if any.
+     * @param bool        $success  Success status of the step.
+     * @param Process     $process  Symfony Process instance.
+     * @param string|null $password Associated password, if any.
      *
      * @return $this For method chaining.
      */
@@ -191,5 +95,47 @@ class Summary implements SummaryInterface
             'exitCodeText' => $process->getExitCodeText(),
             'password'     => $password,
         ]);
+    }
+
+    /**
+     * Add a step to the process.
+     *
+     * @param bool  $success The success status of the step.
+     * @param array $context Additional data or metadata for the step.
+     *
+     * @return $this For method chaining.
+     */
+    public function addStep(bool $success, array $context = []): static
+    {
+        if ($success) {
+            $this->success = true;
+            $this->password = $context['password'] ?? null;
+        }
+
+        $this->attempts++;
+        $contextHash = $this->hashContext($success, $context);
+
+        if ($this->steps->has($contextHash)) {
+            return $this;
+        }
+
+        $this->steps->put($contextHash, [
+            'success' => $success,
+            'context' => $context,
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * Generate a unique hash for a step's context.
+     */
+    protected function hashContext(bool $success, array $context): string
+    {
+        $json = collect($context)
+            ->except('password')
+            ->toJson(JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
+        return sha1($json);
     }
 }

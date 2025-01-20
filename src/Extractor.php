@@ -8,12 +8,6 @@ use Esplora\Lumos\Contracts\SummaryInterface;
 use Esplora\Lumos\Providers\ArrayPasswordProvider;
 use Illuminate\Support\Collection;
 
-/**
- * Class for extracting files with support for passwords and file adapters.
- *
- * This class manages the extraction process, supporting various file types through adapters and
- * using different passwords via a password provider.
- */
 class Extractor
 {
     /**
@@ -31,20 +25,20 @@ class Extractor
     /**
      * Constructor for the Extractor class.
      *
-     * Initializes default adapters for successful and failed extractions.
+     * Initializes with default adapters and an empty password provider.
      */
     public function __construct(iterable $adapters = [])
     {
-        // Default password provider with an empty password list.
         $this->passwordProvider = new ArrayPasswordProvider([]);
-
         $this->adapters = collect($adapters);
     }
 
     /**
-     * Short hand method to create an Extractor instance with the provided files adapters.
+     * Short hand method to create an Extractor instance with provided adapters.
      *
-     * @param iterable $adapters iterable of file adapters.
+     * @param iterable $adapters Array of file adapters.
+     *
+     * @return static
      */
     public static function make(iterable $adapters = []): static
     {
@@ -54,9 +48,9 @@ class Extractor
     /**
      * Sets the password provider for handling protected files.
      *
-     * @param PasswordProviderInterface $provider The password provider to use.
+     * @param PasswordProviderInterface $provider The password provider.
      *
-     * @return $this For method chaining.
+     * @return $this
      */
     public function withPasswords(PasswordProviderInterface $provider): static
     {
@@ -66,11 +60,11 @@ class Extractor
     }
 
     /**
-     * Adds an file adapter to support different file formats.
+     * Adds a file adapter to the extractor.
      *
      * @param AdapterInterface $adapter The file adapter.
      *
-     * @return $this For method chaining.
+     * @return $this
      */
     public function withAdapter(AdapterInterface $adapter): static
     {
@@ -82,9 +76,9 @@ class Extractor
     /**
      * Adds multiple file adapters.
      *
-     * @param AdapterInterface[] $adapters Array of file adapters.
+     * @param iterable $adapters Array of file adapters.
      *
-     * @return $this For method chaining.
+     * @return $this
      */
     public function withAdapters(iterable $adapters): static
     {
@@ -96,14 +90,12 @@ class Extractor
     /**
      * Extracts the file to the specified location.
      *
-     * This method performs the extraction and handles exceptions and callbacks for failure or success.
-     *
      * @param string      $filePath    Path to the file.
-     * @param string|null $destination Directory to extract to. If not specified, uses the same directory as the file.
+     * @param string|null $destination Directory to extract to (default is the file's directory).
      *
-     * @throws \RuntimeException If the password provider is not set.
+     * @throws \RuntimeException If no adapter is found for the given file.
      *
-     * @return SummaryInterface Result of the success callback or password failure callback.
+     * @return SummaryInterface Result of extraction process.
      */
     public function extract(string $filePath, ?string $destination = null): SummaryInterface
     {
@@ -119,11 +111,14 @@ class Extractor
     }
 
     /**
+     * Retrieves supported adapters for the given file path.
+     *
+     * @param string $filePath Path to the file.
+     *
      * @return Collection<AdapterInterface>
      */
     public function getSupportedAdapters(string $filePath): Collection
     {
-        return $this->adapters
-            ->filter(fn (AdapterInterface $adapter) => $adapter->canSupport($filePath));
+        return $this->adapters->filter(fn (AdapterInterface $adapter) => $adapter->canSupport($filePath));
     }
 }

@@ -2,11 +2,6 @@
 
 namespace Esplora\Lumos\Contracts;
 
-/**
- * Interface for providing passwords.
- *
- * Classes implementing this interface should provide a list of passwords to attempt extracting password-protected archives.
- */
 interface PasswordProviderInterface
 {
     /**
