@@ -124,6 +124,6 @@ class Extractor
     public function getSupportedAdapters(string $filePath): Collection
     {
         return $this->adapters
-            ->filter(fn (AdapterInterface $adapter): bool => $adapter->canSupport($filePath));
+            ->filter(fn (AdapterInterface $adapter) => $adapter->canSupport($filePath));
     }
 }
