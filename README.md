@@ -139,6 +139,60 @@ class CustomAdapter implements AdapterInterface
 }
 ```
 
+The library provides common tools to check if a specific file is supported using built-in traits:
+
+To check based on the file's MIME type, use the trait `SupportsMimeTypes`:
+
+```php
+use Esplora\Lumos\Concerns\SupportsMimeTypes;
+
+class CustomAdapter implements AdapterInterface
+{
+    use SupportsMimeTypes;
+
+    /**
+     * Returns a list of supported MIME types.
+     *
+     * @return array<string> An array of supported MIME types.
+     */
+    protected function supportedMimeTypes(): array
+    {
+        return [
+            'application/pdf', // Support for PDF files
+            'image/jpeg',      // Support for JPEG images
+        ];
+    }
+
+    // ...
+}
+```
+
+To check based on file extensions, use the trait `SupportsFileExtensions`:
+
+```php
+use Esplora\Lumos\Concerns\SupportsFileExtensions;
+
+class CustomAdapter implements AdapterInterface
+{
+    use SupportsFileExtensions;
+
+    /**
+     * Returns a list of allowed file extensions.
+     *
+     * @return array<string> An array of allowed extensions.
+     */
+    protected function allowedExtensions(): array
+    {
+        return [
+            'txt',  // Support for text files
+            'zip',  // Support for ZIP archives
+        ];
+    }
+
+    // ...
+}
+```
+
 
 ### Testing
 
