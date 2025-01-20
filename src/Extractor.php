@@ -16,7 +16,7 @@ class Extractor
     protected PasswordProviderInterface $passwordProvider;
 
     /**
-     * Collection of adapters adapters for extracting files.
+     * Collection of adapters for extracting files.
      *
      * @var \Illuminate\Support\Collection<AdapterInterface>
      */
@@ -76,7 +76,7 @@ class Extractor
     /**
      * Adds multiple file adapters.
      *
-     * @param iterable $adapters Array of file adapters.
+     * @param iterable<AdapterInterface> $adapters Array of file adapters.
      *
      * @return $this
      */
