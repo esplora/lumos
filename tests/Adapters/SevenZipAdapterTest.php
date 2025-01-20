@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Esplora\Lumos\Tests;
 
 use Esplora\Lumos\Adapters\SevenZipAdapter;

@@ -46,7 +46,7 @@ class Extractor
      *
      * @param iterable $adapters iterable of file adapters.
      */
-    public static function make(iterable $adapters = []): self
+    public static function make(iterable $adapters = []): static
     {
         return (new static)->withAdapters($adapters);
     }
@@ -58,7 +58,7 @@ class Extractor
      *
      * @return $this For method chaining.
      */
-    public function withPasswords(PasswordProviderInterface $provider): self
+    public function withPasswords(PasswordProviderInterface $provider): static
     {
         $this->passwordProvider = $provider;
 
@@ -72,7 +72,7 @@ class Extractor
      *
      * @return $this For method chaining.
      */
-    public function withAdapter(AdapterInterface $adapter): self
+    public function withAdapter(AdapterInterface $adapter): static
     {
         $this->adapters->push($adapter);
 
@@ -86,7 +86,7 @@ class Extractor
      *
      * @return $this For method chaining.
      */
-    public function withAdapters(iterable $adapters): self
+    public function withAdapters(iterable $adapters): static
     {
         $this->adapters = $this->adapters->merge($adapters);
 
@@ -124,6 +124,6 @@ class Extractor
     public function getSupportedAdapters(string $filePath): Collection
     {
         return $this->adapters
-            ->filter(fn (AdapterInterface $file) => $file->canSupport($filePath));
+            ->filter(fn (AdapterInterface $adapter): bool => $adapter->canSupport($filePath));
     }
 }
