@@ -8,12 +8,6 @@ use Esplora\Lumos\Contracts\AdapterInterface;
 use Illuminate\Support\Str;
 use Symfony\Component\Process\Process;
 
-/**
- * Handler for SevenZipArchive archive files.
- *
- * This class implements the ArchiveInterface and provides functionality for extracting .7z archives,
- * including support for passwords for protected archives.
- */
 class SevenZipAdapter implements AdapterInterface
 {
     use Decryptable, SupportsMimeTypes;

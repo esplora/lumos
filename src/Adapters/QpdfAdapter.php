@@ -7,12 +7,6 @@ use Esplora\Lumos\Concerns\SupportsMimeTypes;
 use Esplora\Lumos\Contracts\AdapterInterface;
 use Symfony\Component\Process\Process;
 
-/**
- * Handler for PDF files with password protection.
- *
- * This class implements the ArchiveAdapterInterface and provides functionality for handling PDF files,
- * specifically for removing passwords using qpdf.
- */
 class QpdfAdapter implements AdapterInterface
 {
     use Decryptable, SupportsMimeTypes;
