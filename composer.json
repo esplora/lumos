@@ -13,13 +13,15 @@
         }
     ],
     "require": {
+        "php": "^8.2",
         "symfony/mime": "^7.1",
         "symfony/process": "^7.1",
         "illuminate/support": "^11.0"
     },
     "require-dev": {
         "laravel/pint": "^1.17",
-        "phpunit/phpunit": "^10.5",
+        "phpunit/phpunit": "^11.5",
+        "rector/rector": "^1.2",
         "symfony/var-dumper": "^7.1",
         "vlucas/phpdotenv": "^5.4.1"
     },
