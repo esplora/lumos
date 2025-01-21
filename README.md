@@ -35,7 +35,7 @@ composer require esplora/lumos
 ## Usage
 
 To get started, create an instance of the `Extractor` class and add the necessary adapters for file formats. The example
-below demonstrates using `SevenZipAdapter` for archive, but you can add your own adapters or use built-in ones.
+below demonstrates using `SevenZipAdapter` for archive, but you can add your own adapters:
 
 ```php
 use Esplora\Lumos\Extractor;
