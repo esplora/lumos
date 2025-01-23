@@ -42,7 +42,7 @@ class Extractor
      */
     public static function make(iterable $adapters = []): static
     {
-        return (new static)->withAdapters($adapters);
+        return new static($adapters);
     }
 
     /**
@@ -68,9 +68,7 @@ class Extractor
      */
     public function withAdapter(AdapterInterface $adapter): static
     {
-        $this->adapters->push($adapter);
-
-        return $this;
+        return $this->withAdapters([$adapter]);
     }
 
     /**
