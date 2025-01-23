@@ -55,7 +55,7 @@ $lumos->attempts(); // 1
 > When multiple adapters are suitable for a given file, the first adapter in the list will be selected.
 
 
-### Handling Password-Protected Files
+## Handling Password-Protected Files
 
 To work with password-protected documents, add a password provider. The example below uses `ArrayPasswordProvider`,
 which accepts an array of passwords.
@@ -87,7 +87,7 @@ If needed, you can create your own password provider by implementing the `Passwo
 > brute-forcing.
 
 
-### Extending File Support
+## Extending File Support
 
 Lumos allows you to easily add support for new file types by creating custom adapters.
 To do so, implement a class that conforms to the `Esplora\Lumos\Contracts\AdapterInterface`.
@@ -184,7 +184,7 @@ class CustomAdapter implements AdapterInterface
 ```
 
 
-### Testing
+## Testing
 
 Testing an application that depends on other services can be challenging, but this should not prevent you from
 contributing to the project.
