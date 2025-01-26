@@ -10,8 +10,9 @@ content), making these tasks simple and accessible.
 
 ###### What can I use this for?
 
-- Unlocking password-protected documents and archives before data extraction with tools like [Apache Tika](https://tika.apache.org/).
-- Online services for removing or attempting password recovery, such as through brute force.
+- Seamlessly integrate with DLP platforms to automate the handling of protected files, ensuring compliance with corporate policies.
+- Unlock password-protected documents and archives for data extraction using tools like [Apache Tika](https://tika.apache.org/).
+- Utilize online services for removing passwords or recovering them through methods like brute force.
 
 ## External Dependencies
 
