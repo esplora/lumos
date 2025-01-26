@@ -205,3 +205,16 @@ the `.env.example`.
 > [!WARNING]  
 > Environment variables from the `.env` file will be loaded only for local testing and are added solely for the
 > convenience of developing this package.
+
+
+## Troubleshooting
+
+### Password Issues
+
+Sometimes, the issue may be due to different encoding types, such as `WINDOWS-CP1251` for Eastern Europe, while the software might input it as `UTF-8`. 
+So, even if the password looks identical, it’s important to use the correct encoding.
+
+### Corrupted or Multipart Archive
+
+The library doesn’t currently handle corruption detection or combining multipart archives. 
+If the file is incompatible, the message will indicate that the password is incorrect.
