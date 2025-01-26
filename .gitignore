@@ -3,6 +3,7 @@
 .phpstorm.meta.php
 _ide_helper.php
 .phpunit.result.cache
+.phpunit.cache
 composer.lock
 .php_cs.cache
 .php-cs-fixer.cache
