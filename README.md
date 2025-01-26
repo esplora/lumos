@@ -42,10 +42,9 @@ below demonstrates using `SevenZipAdapter` for archive, but you can add your own
 use Esplora\Lumos\Extractor;
 use Esplora\Lumos\Adapters\SevenZipAdapter;
 
-$lumos = Extractor::make()
-    ->withAdapters([
-        new SevenZipAdapter(),
-    ])
+$lumos = Extractor::make([
+    new SevenZipAdapter(),
+])
     ->extract('/path/to/your/archive.zip');
 
 $lumos->isSuccessful(); // true
