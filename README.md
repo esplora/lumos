@@ -16,7 +16,7 @@ content), making these tasks simple and accessible.
 
 ## External Dependencies
 
-Lumos relies on the following third-party tools for specific operations.
+Lumos uses the following third-party tools for operations.
 Each adapter is provided out of the box in the `Esplora\Lumos\Adapters\*` namespace:
 
 | **File Type**     | **Tool**                                                         | **Adapter Class**         |
