@@ -24,6 +24,11 @@
         "symfony/var-dumper": "^7.1",
         "vlucas/phpdotenv": "^5.4.1"
     },
+    "suggest": {
+        "qpdf": "Required for processing password-protected PDF files",
+        "msoffcrypto-tool": "Required for decrypting Microsoft Office documents",
+        "7z (7-Zip)": "Required for extracting password-protected archives (ZIP, 7z)"
+    },
     "scripts": {
         "post-install-cmd": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
