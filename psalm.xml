@@ -17,6 +17,7 @@
         </ignoreFiles>
     </projectFiles>
     <issueHandlers>
+        <MissingOverrideAttribute errorLevel="suppress" />
         <MissingTemplateParam errorLevel="suppress" />
     </issueHandlers>
 </psalm>
