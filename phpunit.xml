@@ -3,7 +3,9 @@
          colors="true" processIsolation="false" stopOnFailure="false" stopOnError="false" defaultTestSuite="Main"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd" cacheDirectory=".phpunit.cache"
          backupStaticProperties="false"
-         displayDetailsOnSkippedTests="true">
+         displayDetailsOnSkippedTests="true"
+         executionOrder="random"
+         >
     <testsuites>
         <testsuite name="Main">
             <directory suffix="Test.php">./tests</directory>
