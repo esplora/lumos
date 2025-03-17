@@ -62,7 +62,9 @@ which accepts an array of passwords.
 
 ```php
 use Esplora\Lumos\Extractor;
+use Esplora\Lumos\Adapters\QpdfAdapter;
 use Esplora\Lumos\Adapters\SevenZipAdapter;
+use Esplora\Lumos\Adapters\MSOfficeCryptoToolAdapter;
 use Esplora\Lumos\Providers\ArrayPasswordProvider;
 
 $passwords = new ArrayPasswordProvider([
@@ -72,7 +74,9 @@ $passwords = new ArrayPasswordProvider([
 
 Extractor::make()
     ->withAdapters([
+        new QpdfAdapter(),
         new SevenZipAdapter(),
+        new MSOfficeCryptoToolAdapter(),
     ])
     ->withPasswords($passwords)
     ->extract('/path/to/your/archive.zip', '/path/to/save/to')
