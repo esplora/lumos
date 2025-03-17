@@ -4,15 +4,32 @@
 [![Quality Assurance](https://github.com/esplora/lumos/actions/workflows/quality.yml/badge.svg)](https://github.com/esplora/lumos/actions/workflows/quality.yml)
 [![Coding Guidelines](https://github.com/esplora/lumos/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/esplora/lumos/actions/workflows/php-cs-fixer.yml)
 
+## Introduction
+
 Lumos is a library that provides a interface for removing passwords from protected documents and archives (extracting
 content), making these tasks simple and accessible.
-
 
 ###### What can I use this for?
 
 - Integrating with DLP platforms for protected file processing, ensuring compliance with corporate policies.
 - Unlock password-protected documents and archives for data extraction using tools like [Apache Tika](https://tika.apache.org/).
 - Utilize online services for removing passwords or recovering them through methods like brute force.
+
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [External Dependencies](#external-dependencies)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Handling Password-Protected Files](#handling-password-protected-files)
+- [Extending File Support](#extending-file-support)
+- [Testing](#testing)
+- [Troubleshooting](#troubleshooting)
+  - [Password Issues](#password-issues)
+  - [Corrupted or Multipart Archive](#corrupted-or-multipart-archive)
+
+
 
 ## External Dependencies
 
