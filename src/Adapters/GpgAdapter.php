@@ -3,25 +3,28 @@
 namespace Esplora\Lumos\Adapters;
 
 use Esplora\Lumos\Concerns\Decryptable;
-use Esplora\Lumos\Concerns\SupportsFileExtensions;
+use Esplora\Lumos\Concerns\SupportsMimeTypes;
 use Esplora\Lumos\Contracts\AdapterInterface;
 use Illuminate\Support\Str;
 use Symfony\Component\Process\Process;
 
 class GpgAdapter implements AdapterInterface
 {
-    use Decryptable, SupportsFileExtensions;
+    use Decryptable, SupportsMimeTypes;
 
     public function __construct(protected string $bin = 'gpg') {}
 
     /**
-     * Returns the list of allowed file extensions.
+     * Returns the list of supported MIME types.
      *
-     * @return array<string> Array of allowed file extensions.
+     * @return array<string> Array of MIME types supported by this handler.
      */
-    public function allowedExtensions(): array
+    public function supportedMimeTypes(): array
     {
-        return ['.gpg'];
+        return [
+            'application/pgp',
+            'application/pgp-encrypted',
+        ];
     }
 
     /**

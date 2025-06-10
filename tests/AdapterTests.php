@@ -10,7 +10,7 @@ abstract class AdapterTests extends TestCase
 {
     use DirectoryManagesTestData;
 
-    abstract protected function adepter(): AdapterInterface;
+    abstract protected function adapter(): AdapterInterface;
 
     /**
      * Returns a list of passwords for testing.
@@ -34,8 +34,8 @@ abstract class AdapterTests extends TestCase
 
         parent::setUp();
 
-        if (! $this->adepter()->isSupportedEnvironment()) {
-            $this->markTestSkipped($this->adepter()::class.' is not supported.');
+        if (! $this->adapter()->isSupportedEnvironment()) {
+            $this->markTestSkipped($this->adapter()::class.' is not supported.');
         }
     }
 

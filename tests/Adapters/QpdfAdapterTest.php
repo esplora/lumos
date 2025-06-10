@@ -8,7 +8,7 @@ use Esplora\Lumos\Providers\ArrayPasswordProvider;
 
 class QpdfAdapterTest extends AdapterTests
 {
-    protected function adepter(): AdapterInterface
+    protected function adapter(): AdapterInterface
     {
         return new QpdfAdapter(
             $_SERVER['QPDF_BIN_PATH'] ?? 'qpdf'
@@ -17,7 +17,7 @@ class QpdfAdapterTest extends AdapterTests
 
     public function test_extraction_success(): void
     {
-        $result = $this->adepter()
+        $result = $this->adapter()
             ->extract(
                 $this->getFixturesDir('pdf/simple.pdf'),
                 $this->getExtractionPath(),
@@ -34,7 +34,7 @@ class QpdfAdapterTest extends AdapterTests
     {
         $archivePath = $this->getFixturesDir('pdf/protected.pdf');
 
-        $result = $this->adepter()
+        $result = $this->adapter()
             ->extract($archivePath, $this->getExtractionPath(), $this->getPasswords());
 
         $this->assertTrue($result->isSuccessful());
@@ -47,7 +47,7 @@ class QpdfAdapterTest extends AdapterTests
     {
         $archivePath = $this->getFixturesDir('pdf/protected.pdf');
 
-        $result = $this->adepter()->extract($archivePath, $this->getExtractionPath(), new ArrayPasswordProvider([
+        $result = $this->adapter()->extract($archivePath, $this->getExtractionPath(), new ArrayPasswordProvider([
             'wrongpassword',
         ]));
 

@@ -8,7 +8,7 @@ use Esplora\Lumos\Providers\ArrayPasswordProvider;
 
 class MSOfficeCryptoToolAdapterTest extends AdapterTests
 {
-    protected function adepter(): AdapterInterface
+    protected function adapter(): AdapterInterface
     {
         return new MSOfficeCryptoToolAdapter(
             $_SERVER['MSOFFCRYPTO_TOOL_BIN_PATH'] ?? 'msoffcrypto-tool'
@@ -17,7 +17,7 @@ class MSOfficeCryptoToolAdapterTest extends AdapterTests
 
     public function test_extraction_simple_doc_success(): void
     {
-        $result = $this->adepter()
+        $result = $this->adapter()
             ->extract(
                 $this->getFixturesDir('office-crypto/simple.doc'),
                 $this->getExtractionPath(),
@@ -34,7 +34,7 @@ class MSOfficeCryptoToolAdapterTest extends AdapterTests
     {
         $archivePath = $this->getFixturesDir('office-crypto/protected.ppt');
 
-        $result = $this->adepter()
+        $result = $this->adapter()
             ->extract(
                 $archivePath,
                 $this->getExtractionPath(),
@@ -51,7 +51,7 @@ class MSOfficeCryptoToolAdapterTest extends AdapterTests
     {
         $archivePath = $this->getFixturesDir('office-crypto/protected.ppt');
 
-        $result = $this->adepter()->extract($archivePath, $this->getExtractionPath(), new ArrayPasswordProvider([
+        $result = $this->adapter()->extract($archivePath, $this->getExtractionPath(), new ArrayPasswordProvider([
             'wrongpassword',
         ]));
 

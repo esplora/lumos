@@ -8,16 +8,25 @@ use Esplora\Lumos\Providers\ArrayPasswordProvider;
 
 class GpgAdapterTest extends AdapterTests
 {
-    protected function adepter(): AdapterInterface
+    protected function adapter(): AdapterInterface
     {
         return new GpgAdapter(
             $_SERVER['GPG_BIN_PATH'] ?? 'gpg'
         );
     }
 
+    public function test_extraction_support(): void
+    {
+        $result = $this->adapter()->canSupport(
+            $this->getFixturesDir('gpg/protected.txt.gpg')
+        );
+
+        $this->assertTrue($result);
+    }
+
     public function test_extraction_success(): void
     {
-        $result = $this->adepter()
+        $result = $this->adapter()
             ->extract(
                 $this->getFixturesDir('gpg/protected.txt.gpg'),
                 $this->getExtractionPath(),
@@ -39,7 +48,7 @@ class GpgAdapterTest extends AdapterTests
     {
         $archivePath = $this->getFixturesDir('gpg/protected.txt.gpg');
 
-        $result = $this->adepter()->extract($archivePath, $this->getExtractionPath(), new ArrayPasswordProvider([
+        $result = $this->adapter()->extract($archivePath, $this->getExtractionPath(), new ArrayPasswordProvider([
             'wrongpassword',
         ]));
 

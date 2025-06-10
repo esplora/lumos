@@ -8,7 +8,7 @@ use Esplora\Lumos\Providers\ArrayPasswordProvider;
 
 class SevenZipAdapterTest extends AdapterTests
 {
-    protected function adepter(): AdapterInterface
+    protected function adapter(): AdapterInterface
     {
         return new SevenZipAdapter(
             $_SERVER['SEVEN_ZIP_BIN_PATH'] ?? '7z'
@@ -17,7 +17,7 @@ class SevenZipAdapterTest extends AdapterTests
 
     public function test_extraction_success(): void
     {
-        $result = $this->adepter()
+        $result = $this->adapter()
             ->extract(
                 $this->getFixturesDir('zip/simple.zip'),
                 $this->getExtractionPath(),
@@ -35,7 +35,7 @@ class SevenZipAdapterTest extends AdapterTests
     {
         $archivePath = $this->getFixturesDir('zip/protected.zip');
 
-        $result = $this->adepter()
+        $result = $this->adapter()
             ->extract(
                 $archivePath,
                 $this->getExtractionPath(),
@@ -53,7 +53,7 @@ class SevenZipAdapterTest extends AdapterTests
     {
         $archivePath = $this->getFixturesDir('zip/gg.zip.001');
 
-        $result = $this->adepter()
+        $result = $this->adapter()
             ->extract(
                 $archivePath,
                 $this->getExtractionPath(),
@@ -67,7 +67,7 @@ class SevenZipAdapterTest extends AdapterTests
     {
         $archivePath = $this->getFixturesDir('zip/XcwfXuLNEY.zip');
 
-        $result = $this->adepter()
+        $result = $this->adapter()
             ->extract(
                 $archivePath,
                 $this->getExtractionPath(),
@@ -87,7 +87,7 @@ class SevenZipAdapterTest extends AdapterTests
 
         $archivePath = $this->getFixturesDir('zip/protected.zip');
 
-        $result = $this->adepter()
+        $result = $this->adapter()
             ->extract(
                 $archivePath,
                 $this->getExtractionPath(),
