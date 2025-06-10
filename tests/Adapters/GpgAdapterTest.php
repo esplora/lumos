@@ -3,7 +3,6 @@
 namespace Esplora\Lumos\Tests;
 
 use Esplora\Lumos\Adapters\GpgAdapter;
-use Esplora\Lumos\Adapters\QpdfAdapter;
 use Esplora\Lumos\Contracts\AdapterInterface;
 use Esplora\Lumos\Providers\ArrayPasswordProvider;
 

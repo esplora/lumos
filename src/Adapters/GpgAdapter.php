@@ -14,7 +14,6 @@ class GpgAdapter implements AdapterInterface
 
     public function __construct(protected string $bin = 'gpg') {}
 
-
     /**
      * Returns the list of allowed file extensions.
      *
