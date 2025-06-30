@@ -8,6 +8,7 @@ Lumos is a library that provides a interface for removing passwords from protect
 content), making these tasks simple and accessible.
 
 
+
 ###### What can I use this for?
 
 - Integrating with DLP platforms for protected file processing, ensuring compliance with corporate policies.
@@ -34,7 +35,7 @@ Install the library using Composer:
 composer require esplora/lumos
 ```
 
-## Usage
+## Basic Usage
 
 To get started, create an instance of the `Extractor` class and add the necessary adapters for file formats. The example
 below demonstrates using `SevenZipAdapter` for archive, but you can add your own adapters:
@@ -92,7 +93,7 @@ If needed, you can create your own password provider by implementing the `Passwo
 > brute-forcing.
 
 
-## Extending File Support
+## Creating Custom Adapters
 
 Lumos allows you to easily add support for new file types by creating custom adapters.
 To do so, implement a class that conforms to the `Esplora\Lumos\Contracts\AdapterInterface`.
