@@ -20,12 +20,13 @@ content), making these tasks simple and accessible.
 Lumos uses the following third-party tools for operations.
 Each adapter is provided out of the box in the `Esplora\Lumos\Adapters\*` namespace:
 
-| **File Type**     | **Tool**                                                      | **Adapter Class**         |
-|-------------------|---------------------------------------------------------------|---------------------------|
-| PDF               | [qpdf](https://github.com/qpdf/qpdf)                          | QpdfAdapter               |
+| **File Type**     | **Tool**                                                     | **Adapter Class**         |
+|-------------------|--------------------------------------------------------------|---------------------------|
+| PDF               | [qpdf](https://github.com/qpdf/qpdf)                         | QpdfAdapter               |
 | Microsoft Office  | [msoffcrypto-tool](https://github.com/nolze/msoffcrypto-tool) | MSOfficeCryptoToolAdapter |
-| Archive (ZIP, 7z) | [7-zip](https://www.7-zip.org/)                               | SevenZipAdapter           |
-| GnuPG (.gpg)      | [gpg](https://gnupg.org/)                                     | GpgAdapter                |
+| Archive (ZIP, 7z) | [7-zip](https://www.7-zip.org/)                              | SevenZipAdapter           |
+| GnuPG (.gpg)      | [gpg](https://gnupg.org/)                                    | GpgAdapter                |
+| Email Message Format (.eml)      | [cosmira/envelope](https://github.com/cosmira/envelope)                                     | EnvelopeAdapter                |
 
 ## Installation
 

@@ -1,0 +1,38 @@
+Sender: "Alexandr"
+From: "Alexandr"
+Subject: Test Email
+To: "Alexandr" <Alexandr>
+Cc: 
+Bcc: 
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="--_=_NextPart1_95b362e5-df33-41ff-8b53-5bee58cab281"
+
+This is a multi-part message in MIME format.
+
+----_=_NextPart1_95b362e5-df33-41ff-8b53-5bee58cab281
+Content-Type: multipart/alternative; boundary="--_=_NextPart0_1070df5a-2df5-42ce-bb2f-5c16609ab070"
+
+
+----_=_NextPart0_1070df5a-2df5-42ce-bb2f-5c16609ab070
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+>>> Place your content here <<<
+
+----_=_NextPart0_1070df5a-2df5-42ce-bb2f-5c16609ab070
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><p=
+>&gt;&gt;&gt; Place your content here &lt;&lt;&lt;</p>
+----_=_NextPart0_1070df5a-2df5-42ce-bb2f-5c16609ab070--
+
+----_=_NextPart1_95b362e5-df33-41ff-8b53-5bee58cab281
+Content-Type: application/octet-stream; name="simple.txt"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="simple.txt"
+
+SGVsbG8gV29ybGQh
+----_=_NextPart1_95b362e5-df33-41ff-8b53-5bee58cab281--
+
