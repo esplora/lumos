@@ -10,7 +10,7 @@ class EnvelopeAdapterTest extends AdapterTests
 {
     protected function adapter(): AdapterInterface
     {
-        return new EnvelopeAdapter();
+        return new EnvelopeAdapter;
     }
 
     public function test_extraction_success(): void
