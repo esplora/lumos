@@ -40,6 +40,15 @@ class EnvelopeAdapter implements AdapterInterface
     {
         $emailContent = file_get_contents($filePath);
 
+        if ($emailContent === false) {
+            $this->summary()->addStep(false, [
+                'error' => 'Unable to read file content',
+                'file'  => $filePath,
+            ]);
+
+            return false;
+        }
+
         $mail = Envelope::fromString($emailContent);
 
         $attachments = $mail->attachments();
